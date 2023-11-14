@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-Target 'Tempo App' in project 'Tempo App' (no dependencies)
