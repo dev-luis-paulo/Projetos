@@ -1,0 +1,39 @@
+{
+  "" : {
+    "dependencies" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Index.noindex/Build/Intermediates.noindex/Tempo App.build/Debug-iphonesimulator/Tempo App.build/Objects-normal/arm64/Tempo App-master.d",
+    "diagnostics" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Index.noindex/Build/Intermediates.noindex/Tempo App.build/Debug-iphonesimulator/Tempo App.build/Objects-normal/arm64/Tempo App-master.dia",
+    "emit-module-dependencies" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Index.noindex/Build/Intermediates.noindex/Tempo App.build/Debug-iphonesimulator/Tempo App.build/Objects-normal/arm64/Tempo App-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Index.noindex/Build/Intermediates.noindex/Tempo App.build/Debug-iphonesimulator/Tempo App.build/Objects-normal/arm64/Tempo App-master-emit-module.dia",
+    "swift-dependencies" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Index.noindex/Build/Intermediates.noindex/Tempo App.build/Debug-iphonesimulator/Tempo App.build/Objects-normal/arm64/Tempo App-master.swiftdeps"
+  },
+  "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/AppDelegate.swift" : {
+
+  },
+  "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/DailyForecastTableViewCell.swift" : {
+
+  },
+  "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Extensions/Color+Extensions.swift" : {
+
+  },
+  "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Extensions/Core+Extensions.swift" : {
+
+  },
+  "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Extensions/UIView+Extensions.swift" : {
+
+  },
+  "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/previsaoCollectionViewCell.swift" : {
+
+  },
+  "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/SceneDelegate.swift" : {
+
+  },
+  "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Service.swift" : {
+
+  },
+  "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Index.noindex/Build/Intermediates.noindex/Tempo App.build/Debug-iphonesimulator/Tempo App.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+
+  },
+  "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/ViewController.swift" : {
+
+  }
+}

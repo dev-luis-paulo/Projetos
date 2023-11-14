@@ -1,0 +1,3 @@
+Target dependency graph (2 targets)
+Target 'Tempo App' in project 'Tempo App' (no dependencies)
+Target 'Tempo App' in project 'Tempo App' (no dependencies)

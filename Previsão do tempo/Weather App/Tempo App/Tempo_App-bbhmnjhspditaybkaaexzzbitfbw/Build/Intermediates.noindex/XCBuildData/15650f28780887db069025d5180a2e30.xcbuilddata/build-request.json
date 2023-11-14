@@ -1,0 +1,63 @@
+{
+  "buildCommand" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildAndRun"
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "ccfcac874b42fc2fca644d62e71ae28f6cf1e44cedbcb446ce6b7de05b937705"
+    }
+  ],
+  "containerPath" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App.xcodeproj",
+  "continueBuildingAfterErrors" : false,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator17.0",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Build/Products",
+      "derivedDataPath" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App",
+      "indexDataStoreFolderPath" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Index.noindex/PrecompiledHeaders",
+      "pchPath" : "/Users/luis/Desktop/programacao/Projetos/Previsão do tempo/Weather App/Tempo App/Tempo_App-bbhmnjhspditaybkaaexzzbitfbw/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ASSETCATALOG_FILTER_FOR_DEVICE_MODEL" : "iPhone16,1",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_OS_VERSION" : "17.0",
+          "ASSETCATALOG_FILTER_FOR_THINNING_DEVICE_CONFIGURATION" : "iPhone16,1",
+          "BUILD_ACTIVE_RESOURCES_ONLY" : "YES",
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "NO",
+          "TARGET_DEVICE_IDENTIFIER" : "01F667F2-E19D-41FB-8CFD-450A504097A7",
+          "TARGET_DEVICE_MODEL" : "iPhone16,1",
+          "TARGET_DEVICE_OS_VERSION" : "17.0",
+          "TARGET_DEVICE_PLATFORM_NAME" : "iphonesimulator"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}
