@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var playerInfo: PlayerInfo?
+    @State private var playerPUUID: PlayerPUUID?
     @State private var playerRank: [PlayerRank]?
     @State private var urlBuilder: APIURLBuilder?
     @State var searchTerm: String
@@ -112,9 +113,6 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .shadow(radius: 5)
                     .frame(maxWidth: .infinity)
-                    .task {
-                        await fetchData()
-                    }
                     
                     Spacer()
                 }
@@ -124,9 +122,12 @@ struct ContentView: View {
     
     private func fetchData() async {
         do {
-            playerInfo = try await Service().getPlayerId(username: searchTerm)
-            playerRank = try await Service().getPlayerRank(username: searchTerm)
-            urlBuilder = APIURLBuilder(playerInfo: playerInfo ?? PlayerInfo(name: "", id: "", profileIconId: 0, summonerLevel: 0), playerRank: playerRank ?? [PlayerRank(tier: "unranked", rank: "", leaguePoints: 0, wins: 0, losses: 0)])
+            let entrada = tratarUsername(gameNameWithTag: searchTerm)
+            
+            playerPUUID = try await Service().getPlayerPUUID(gameName: entrada.gameName, tagLine: entrada.tagLine)
+            playerInfo = try await Service().getPlayerId(puuid: playerPUUID?.puuid ?? "")
+            playerRank = try await Service().getPlayerRank(summonerId: playerInfo?.id ?? "")
+            urlBuilder = APIURLBuilder(playerInfo: playerInfo!, playerRank: playerRank!)
         } catch apiError.invalidURL {
             print("Invalid URL")
         } catch apiError.invalidResponse {
@@ -136,6 +137,15 @@ struct ContentView: View {
         } catch {
             print("Unexpected error")
         }
+    }
+    
+    private func tratarUsername(gameNameWithTag: String) -> (gameName: String, tagLine: String) {
+        let components = gameNameWithTag.components(separatedBy: "#")
+        
+        let gameName = components[0]
+        let tagLine = components[1]
+        
+        return (gameName, tagLine)
     }
 }
 

@@ -10,8 +10,15 @@ import Foundation
 struct PlayerInfo: Codable {
     let name: String
     let id: String
+    let accountId: String
     let profileIconId: Int
     let summonerLevel: UInt64
+}
+
+struct PlayerPUUID: Codable {
+    let puuid: String
+    let gameName: String
+    let tagLine: String
 }
 
 struct PlayerRank: Codable {
@@ -25,11 +32,6 @@ struct PlayerRank: Codable {
 struct APIURLBuilder {
     let playerInfo: PlayerInfo
     let playerRank: [PlayerRank]
-
-    init(playerInfo: PlayerInfo, playerRank: [PlayerRank]) {
-        self.playerInfo = playerInfo
-        self.playerRank = playerRank
-    }
 
     func profileIconURL() -> URL? {
         let urlString = "https://ddragon.leagueoflegends.com/cdn/13.23.1/img/profileicon/\(playerInfo.profileIconId).png"
@@ -53,17 +55,39 @@ enum apiError: Error {
 
 class Service {
     
-    private let apiKey: String = "RGAPI-dc6d8421-6727-4085-973b-d8b39b72cd86"
+    private let apiKey: String = "RGAPI-cc609840-82d3-48a6-9c16-ee3721f4d2b3"
     var region: String = "br1"
-    private let suffixSummoner: String = "/tft/summoner/v1/summoners/by-name/"
+    private let suffixSummoner: String = "/tft/summoner/v1/summoners/by-puuid/"
     private let suffixRank: String = "/tft/league/v1/entries/by-summoner/"
+    private let suffixAccount: String = "/riot/account/v1/accounts/by-riot-id/"
     
     var baseURL: String {
         "https://\(region).api.riotgames.com"
     }
     
-    func getPlayerId(username: String) async throws -> PlayerInfo {
-        let urlStringSummoner = "\(baseURL)\(suffixSummoner)\(username)?api_key=\(apiKey)"
+    func getPlayerPUUID(gameName: String, tagLine: String) async throws -> PlayerPUUID {
+        let urlStringPlayer = "https://americas.api.riotgames.com\(suffixAccount)\(gameName)/\(tagLine)?api_key=\(apiKey)"
+        
+        guard let urlPlayer = URL(string: urlStringPlayer) else { throw apiError.invalidURL }
+        
+        let (data, response) = try await URLSession.shared.data(from: urlPlayer)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw apiError.invalidResponse
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let playerPUUID = try decoder.decode(PlayerPUUID.self, from: data)
+            
+            return playerPUUID
+        } catch {
+            throw apiError.invalidData
+        }
+    }
+    
+    func getPlayerId(puuid: String) async throws -> PlayerInfo {
+        let urlStringSummoner = "\(baseURL)\(suffixSummoner)\(puuid)?api_key=\(apiKey)"
         
         guard let urlSummoner = URL(string: urlStringSummoner) else { throw apiError.invalidURL }
                 
@@ -83,10 +107,8 @@ class Service {
         }
     }
     
-    func getPlayerRank(username: String) async throws -> [PlayerRank] {
-        let playerInfo = try await getPlayerId(username: username)
-            
-        let urlStringRank = "\(baseURL)\(suffixRank)\(playerInfo.id)?api_key=\(apiKey)"
+    func getPlayerRank(summonerId: String) async throws -> [PlayerRank] {
+        let urlStringRank = "\(baseURL)\(suffixRank)\(summonerId)?api_key=\(apiKey)"
         
         guard let urlRank = URL(string: urlStringRank) else { throw apiError.invalidURL }
                 
