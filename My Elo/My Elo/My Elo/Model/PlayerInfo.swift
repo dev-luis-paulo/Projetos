@@ -55,14 +55,18 @@ enum apiError: Error {
 
 class Service {
     
-    private let apiKey: String = "RGAPI-cc609840-82d3-48a6-9c16-ee3721f4d2b3"
-    var region: String = "br1"
+    private let apiKey: String = "RGAPI-50e5f674-bafe-4761-af6e-e52adab363b2"
+    var selectedRegion: String = ""
     private let suffixSummoner: String = "/tft/summoner/v1/summoners/by-puuid/"
     private let suffixRank: String = "/tft/league/v1/entries/by-summoner/"
     private let suffixAccount: String = "/riot/account/v1/accounts/by-riot-id/"
     
+    func setRegion(_ region: String) {
+            selectedRegion = region
+    }
+    
     var baseURL: String {
-        "https://\(region).api.riotgames.com"
+        "https://\(selectedRegion.lowercased()).api.riotgames.com"
     }
     
     func getPlayerPUUID(gameName: String, tagLine: String) async throws -> PlayerPUUID {

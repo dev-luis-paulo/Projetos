@@ -14,6 +14,11 @@ struct ContentView: View {
     @State private var playerRank: [PlayerRank]?
     @State private var urlBuilder: APIURLBuilder?
     @State var searchTerm: String
+    @State private var service = Service()
+    
+    let regions = ["BR1", "EUN1", "EUW1", "JP1", "KR", "LA1", "LA2", "NA1", "OC1", "PH2", "RU", "SG2", "TH2", "TR1", "TW2", "VN2"]
+    @State var selectedRegion = "BR1"
+        
     
     var body: some View {
         
@@ -25,11 +30,24 @@ struct ContentView: View {
             .overlay(
                 VStack{
                     HStack {
-                        TextField("Enter username", text: $searchTerm)
+                        Menu {
+                            ForEach(regions, id: \.self) { region in
+                                Button(action: {
+                                    selectedRegion = region
+                                }) {
+                                    Text(region)
+                                }
+                            }
+                        } label: {
+                            Text("\(selectedRegion)")
+                                .foregroundColor(.black)
+                        }
+                        .padding(.leading, 10)
+                        
+                        TextField("Enter username#tag", text: $searchTerm)
                             .foregroundColor(.black)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .autocapitalization(.none)
-                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                         
                         Button(action: {
                             Task {
@@ -47,6 +65,7 @@ struct ContentView: View {
                     .cornerRadius(10)
                     .shadow(radius: 5)
                     .frame(maxWidth: 330)
+                    
                     
                     VStack(alignment: .center) {
                         
@@ -72,7 +91,6 @@ struct ContentView: View {
                             VStack{
                                 Text(playerInfo?.name ?? "Username")
                                     .bold()
-                                    .font(.title3)
                                 
                                 Text("Level " + String(playerInfo?.summonerLevel ?? 100))
                             }
@@ -100,7 +118,6 @@ struct ContentView: View {
                                     Text(playerRank?.first?.rank ?? "Rank")
                                 }
                                 .bold()
-                                .font(.title3)
                                 
                                 Text(String(playerRank?.first?.leaguePoints ?? 0)+" LP")
                             }
@@ -124,9 +141,13 @@ struct ContentView: View {
         do {
             let entrada = tratarUsername(gameNameWithTag: searchTerm)
             
-            playerPUUID = try await Service().getPlayerPUUID(gameName: entrada.gameName, tagLine: entrada.tagLine)
-            playerInfo = try await Service().getPlayerId(puuid: playerPUUID?.puuid ?? "")
-            playerRank = try await Service().getPlayerRank(summonerId: playerInfo?.id ?? "")
+            service.setRegion(selectedRegion)
+            //service.setEntrada(entrada.gameName, entrada.tagline, selectedRegion)
+            
+            playerPUUID = try await service.getPlayerPUUID(gameName: entrada.gameName, tagLine: entrada.tagLine)
+            playerInfo = try await service.getPlayerId(puuid: playerPUUID?.puuid ?? "")
+            playerRank = try await service.getPlayerRank(summonerId: playerInfo?.id ?? "")
+            
             urlBuilder = APIURLBuilder(playerInfo: playerInfo!, playerRank: playerRank!)
         } catch apiError.invalidURL {
             print("Invalid URL")
