@@ -11,7 +11,7 @@ import SwiftUI
 struct My_EloApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(searchTerm: "")
+            ContentView()
         }
     }
 }

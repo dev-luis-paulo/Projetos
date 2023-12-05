@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0B38C0A2B1D2E680002EA54 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B38C092B1D2E680002EA54 /* SearchBarView.swift */; };
+		A0B38C0F2B1D52A90002EA54 /* SearchBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B38C0E2B1D52A90002EA54 /* SearchBarViewModel.swift */; };
+		A0B38C112B1D80F10002EA54 /* PlayerInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B38C102B1D80F10002EA54 /* PlayerInfoData.swift */; };
 		A0E309CC2B16BD150068DAA0 /* My_EloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E309CB2B16BD150068DAA0 /* My_EloApp.swift */; };
 		A0E309CE2B16BD150068DAA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E309CD2B16BD150068DAA0 /* ContentView.swift */; };
 		A0E309D02B16BD160068DAA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0E309CF2B16BD160068DAA0 /* Assets.xcassets */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0B38C092B1D2E680002EA54 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		A0B38C0E2B1D52A90002EA54 /* SearchBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewModel.swift; sourceTree = "<group>"; };
+		A0B38C102B1D80F10002EA54 /* PlayerInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoData.swift; sourceTree = "<group>"; };
 		A0E309C82B16BD150068DAA0 /* My Elo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Elo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0E309CB2B16BD150068DAA0 /* My_EloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_EloApp.swift; sourceTree = "<group>"; };
 		A0E309CD2B16BD150068DAA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +40,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0B38C082B1D2E3D0002EA54 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A0B38C092B1D2E680002EA54 /* SearchBarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A0B38C0D2B1D52850002EA54 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A0B38C0E2B1D52A90002EA54 /* SearchBarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A0E309BF2B16BD150068DAA0 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				A0E309D92B16C16D0068DAA0 /* Model */,
+				A0B38C082B1D2E3D0002EA54 /* View */,
+				A0B38C0D2B1D52850002EA54 /* ViewModel */,
 				A0E309CB2B16BD150068DAA0 /* My_EloApp.swift */,
 				A0E309CD2B16BD150068DAA0 /* ContentView.swift */,
 				A0E309CF2B16BD160068DAA0 /* Assets.xcassets */,
@@ -74,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				A0E309DC2B16C1CF0068DAA0 /* PlayerInfo.swift */,
+				A0B38C102B1D80F10002EA54 /* PlayerInfoData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,6 +173,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B38C112B1D80F10002EA54 /* PlayerInfoData.swift in Sources */,
+				A0B38C0F2B1D52A90002EA54 /* SearchBarViewModel.swift in Sources */,
+				A0B38C0A2B1D2E680002EA54 /* SearchBarView.swift in Sources */,
 				A0E309DD2B16C1CF0068DAA0 /* PlayerInfo.swift in Sources */,
 				A0E309CE2B16BD150068DAA0 /* ContentView.swift in Sources */,
 				A0E309CC2B16BD150068DAA0 /* My_EloApp.swift in Sources */,
@@ -290,8 +318,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,8 +347,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

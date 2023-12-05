@@ -53,23 +53,29 @@ enum apiError: Error {
     case invalidData
 }
 
+private var appDataManager = AppDataManager.shared
+
 class Service {
     
-    private let apiKey: String = "RGAPI-50e5f674-bafe-4761-af6e-e52adab363b2"
+    private let apiKey: String = "RGAPI-a3395a36-aa10-4e2f-b5b7-6e8605417948"
     var selectedRegion: String = ""
+    var gameName: String = ""
+    var tagLine: String = ""
     private let suffixSummoner: String = "/tft/summoner/v1/summoners/by-puuid/"
     private let suffixRank: String = "/tft/league/v1/entries/by-summoner/"
     private let suffixAccount: String = "/riot/account/v1/accounts/by-riot-id/"
     
-    func setRegion(_ region: String) {
+    func setEntrada(region: String, name: String, tag: String) {
             selectedRegion = region
+            gameName = name
+            tagLine = tag
     }
     
     var baseURL: String {
         "https://\(selectedRegion.lowercased()).api.riotgames.com"
     }
     
-    func getPlayerPUUID(gameName: String, tagLine: String) async throws -> PlayerPUUID {
+    func getPlayerPUUID() async throws -> PlayerPUUID {
         let urlStringPlayer = "https://americas.api.riotgames.com\(suffixAccount)\(gameName)/\(tagLine)?api_key=\(apiKey)"
         
         guard let urlPlayer = URL(string: urlStringPlayer) else { throw apiError.invalidURL }
@@ -90,8 +96,11 @@ class Service {
         }
     }
     
-    func getPlayerId(puuid: String) async throws -> PlayerInfo {
-        let urlStringSummoner = "\(baseURL)\(suffixSummoner)\(puuid)?api_key=\(apiKey)"
+    func getPlayerId() async throws -> PlayerInfo {
+        //let playerPUUID = try await getPlayerPUUID()
+        let playerPUUID = appDataManager.storedPlayerPUUID
+        
+        let urlStringSummoner = "\(baseURL)\(suffixSummoner)\(playerPUUID?.puuid ?? "")?api_key=\(apiKey)"
         
         guard let urlSummoner = URL(string: urlStringSummoner) else { throw apiError.invalidURL }
                 
@@ -111,8 +120,11 @@ class Service {
         }
     }
     
-    func getPlayerRank(summonerId: String) async throws -> [PlayerRank] {
-        let urlStringRank = "\(baseURL)\(suffixRank)\(summonerId)?api_key=\(apiKey)"
+    func getPlayerRank() async throws -> [PlayerRank] {
+        //let playerInfo = try await getPlayerId()
+        let playerInfo = appDataManager.storedPlayerInfo
+        
+        let urlStringRank = "\(baseURL)\(suffixRank)\(playerInfo?.id ?? "")?api_key=\(apiKey)"
         
         guard let urlRank = URL(string: urlStringRank) else { throw apiError.invalidURL }
                 
@@ -132,5 +144,6 @@ class Service {
         }
     }
     
-    
 }
+
+
